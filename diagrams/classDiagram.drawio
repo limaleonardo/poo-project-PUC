@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.8.3">
+  <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
+    <mxGraphModel dx="1387" dy="530" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_SDoJPaqs_UquuAitiC5-1" value="Ferramenta" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="10" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-2" value="- nome: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-1">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-4" value="+ nome():String&lt;div&gt;+ usar(): Boolean&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-1">
+          <mxGeometry y="60" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-5" value="Objeto" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="10" width="190" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-6" value="- nome: String&lt;br&gt;    - descricaoAntesAcao: String&lt;br&gt;    - descricaoDepoisAcao: String&lt;br&gt;    - acaoOk: Boolean&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-5">
+          <mxGeometry y="26" width="190" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-5">
+          <mxGeometry y="100" width="190" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-8" value="+ get nome(): String&lt;br&gt;+ get acaoOk(): Boolean&lt;br&gt;+ set acaoOk(Boolean): void&lt;br&gt;+ get descricao(): String&lt;br&gt;+ usar(Ferramenta): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-5">
+          <mxGeometry y="108" width="190" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-9" value="Sala" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="10" width="240" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-10" value="- nome: String&amp;nbsp;&lt;div&gt;- objetos: Map&amp;lt;String, Objeto&amp;gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;- ferramentas: Map&amp;lt;String, Ferramenta&amp;gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;- portas: Map&amp;lt;String, Sala&amp;gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;- engine: Engine&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-9">
+          <mxGeometry y="26" width="240" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-9">
+          <mxGeometry y="120" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-12" value="    + get nome(): String&amp;nbsp;&lt;div&gt;+ get objetos(): Map&amp;nbsp;&lt;/div&gt;&lt;div&gt;+ get ferramentas(): Map&amp;nbsp;&lt;/div&gt;&lt;div&gt;+ get portas(): Map&lt;br/&gt;    + get engine(): Engine&lt;br/&gt;    + objetosDisponiveis(): String[]&lt;br/&gt;    + ferramentasDisponiveis(): String[]&lt;br/&gt;    + portasDisponiveis(): String[]&lt;br/&gt;    + pega(String): Boolean&lt;br/&gt;    + sai(String): Sala&lt;br/&gt;    + textoDescricao(): String&lt;br/&gt;    + usa(): Boolean&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-9">
+          <mxGeometry y="128" width="240" height="192" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-13" value="Engine" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="10" width="200" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-14" value=" - mochila: Mochila&amp;nbsp;&lt;div&gt;- salaCorrente: Sala&amp;nbsp;&lt;/div&gt;&lt;div&gt;- fim: Boolean&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-13">
+          <mxGeometry y="26" width="200" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-15" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-13">
+          <mxGeometry y="90" width="200" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="_SDoJPaqs_UquuAitiC5-16" value="    + get mochila(): Mochila&lt;br/&gt;    + set mochila(Ferramenta): void&lt;br/&gt;    + get salaCorrente(): Sala&lt;br/&gt;    + set salaCorrente(Sala): void&lt;br/&gt;    + indicaFimDeJogo(): void&lt;br/&gt;    + criaCenario(): void&lt;br/&gt;    + joga(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_SDoJPaqs_UquuAitiC5-13">
+          <mxGeometry y="98" width="200" height="132" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
