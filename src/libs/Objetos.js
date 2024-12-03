@@ -7,7 +7,7 @@ export class ProfessorDesacordado extends Objeto {
     super(
       "professor",
       "O professor parece preso em um sono profundo",
-      "O professor despertou. Ainda confuso, mas ficará bem."
+      "O professor despertou. Ainda confuso, mas ficará bem. Você se saiu muito bem, jovem aprendiz!"
     );
   }
 
@@ -15,12 +15,15 @@ export class ProfessorDesacordado extends Objeto {
     validate(acao, "String");
     switch (acao) {
       case "investigar":
-        console.log("lorem ipsilum");
+        console.log(
+          `O professor se mantém completamente imóvel em um sono pesado como um rio profundo.
+          Mas ele ainda está vivo, e precisando de ajuda. Procure pelos ingredientes para curá-lo`
+        );
         break;
       case "aplicar":
-        console.log("dolor sit ammet");
         this.acaoOk = true;
-        break;
+        console.log(this.descricao)
+        return "FIM"
       default:
         console.log(`Você não pode fazer isso (${acao}) com ${this.nome}`)
     }
@@ -29,6 +32,7 @@ export class ProfessorDesacordado extends Objeto {
 }
 
 // ----------------------------------------------------
+// ITEM
 export class GarrafaEmpoeirada extends Objeto {
   constructor() {
     super(
@@ -42,18 +46,16 @@ export class GarrafaEmpoeirada extends Objeto {
     validate(acao, "String");
     switch (acao) {
       case "investigar":
-        this.acaoOk = true
-        console.log(this.descricao);
         this.acaoOk = true;
-        break;
+        console.log(this.descricao);
+        return CachacaBraba()
       default:
         console.log(`Você não pode fazer isso (${acao}) com ${this.nome}`)
     }
   }
 
 }
-
-// ----------------------------------------------------
+// SUB-ITEM (é o produto do item mais ação)
 export class CachacaBraba extends Objeto {
   constructor() {
     super(
@@ -94,13 +96,13 @@ export class RaboDeDraco extends Objeto {
         console.log(this.descricao);
         break;
       case "cortar":
-        if(!this.acaoOk) {
+        if (!this.acaoOk) {
           console.log(
             "Com um pouco de dificuldade você remove "
             + "a seta presente na ponta da peça de carne"
           );
           this.acaoOk = true
-          break;
+          return PontaDeRaboDeDraco()
         }
         console.log("Sua faca não parece ser capaz de cortar a seção mais espessa da cauda ...")
         break;
@@ -111,7 +113,6 @@ export class RaboDeDraco extends Objeto {
 
 }
 
-// ----------------------------------------------------
 export class PontaDeRaboDeDraco extends Objeto {
   constructor() {
     super(
@@ -151,7 +152,7 @@ export class PilhaDePoeiraRosada extends Objeto {
       case "investigar":
         this.acaoOk = true;
         console.log(this.descricao);
-        break;
+        return SalRosaDosMontesNevados()
       default:
         console.log(`Você não pode fazer isso (${acao}) com ${this.nome}`)
     }
@@ -235,7 +236,7 @@ export class VasoDePlantas extends Objeto {
           + "Com uma leve pressão do punho e voi lá óleo de Ricino."
         );
         this.acaoOk = true
-        break;
+        return OleoDeRicino()
       default:
         console.log(`Você não pode fazer isso (${acao}) com ${this.nome}`)
     }
@@ -337,24 +338,65 @@ export class NotasDePesquisa extends Objeto {
 }
 
 export class CaldeiraoAlquimico extends Objeto {
+  #recipe_stage
+  #recipe_steps
   constructor() {
     super(
       "caldeirao_alquimico",
-      "",
+      "Um imponente caldeir",
       ""
     );
+    this.#recipe_stage = 0
+    this.#recipe_steps = [
+      [CachacaBraba(), OleoDeRicino()],
+      [PontaDeRaboDeDraco()],
+      [SalRosaDosMontesNevados()],
+    ]
   }
 
   usar(acao) {
     validate(acao, "String");
     switch (acao) {
       case "coletar":
-        this.acaoOk=true
+        this.acaoOk = true
         console.log("lorem ipsilum");
         break;
       default:
         console.log(`Você não pode fazer isso (${acao}) com ${this.nome}`)
     }
+  }
+
+  adicionar(ingredientes) {
+    validate(ingredientes, "Array")
+    const mensagemDeFalha = `O caldeirão começa a borbulhar fervorosamente,
+            liberando vapores alaranjados que queimam ao toque, você sente o
+            calor e sabe que errou na mistura, infelizmente é tarde demais ...
+            ... Você sente o calor de mil estrelas e mais nada ...`;
+
+    const mensagemDeSucesso = `O caldeirão repousa com um liquido verde azulado em seu interior.
+    Parece que correu tudo bem, agora me resta coletar essa poção e curar o professor ...`
+
+    // Adicionou mais ingredientes do que deveria:
+    if (this.#recipe_stage+1 > this.#recipe_steps[this.#recipe_stage].length) {
+      console.log( mensagemDeFalha )
+      return "FIM"
+    }
+
+    // Caso adicione ingredientes errados:
+    ingredientes.forEach(item => {
+      this.#recipe_steps[this.#recipe_stage].forEach(recipeItem => {
+        if (!(item instanceof recipeItem)) {
+          console.log( mensagemDeFalha )
+          return "FIM"
+        }
+      });
+    });
+
+    // completou o estagio final
+    if (this.#recipe_stage+1 === this.#recipe_steps[this.#recipe_stage].length) {
+
+    }
+    this.#recipe_stage += 1
   }
 
 }

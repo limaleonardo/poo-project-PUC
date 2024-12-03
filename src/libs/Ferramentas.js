@@ -52,6 +52,14 @@ export class LupaRevelacaoArcana extends Ferramenta {
   }
 
   usar() {
+    if(this.bateria <= 0) {
+      console.log(
+        "Parece que sua lupa esta sem cargas, "
+        +"melhor procurar algo para recarregá-la"
+      )
+      return "faz nada"
+    }
+    this.#bateria -= 1
     return "investigar"
   }
 }

@@ -13,7 +13,7 @@ export class Ferramenta {
 	get nome() {
 		return this.#nome;
 	}
-	
+
 	usar() {
 		return true;
 	}
@@ -25,7 +25,7 @@ export class Objeto {
     #descricaoAntesAcao;
     #descricaoDepoisAcao;
     #acaoOk;
-    	
+
 	constructor(nome,descricaoAntesAcao, descricaoDepoisAcao) {
 		validate(arguments,["String","String","String"]);
 		this.#nome = nome;
@@ -33,7 +33,7 @@ export class Objeto {
 		this.#descricaoDepoisAcao = descricaoDepoisAcao;
 		this.#acaoOk = false;
 	}
-	
+
 	get nome(){
 		return this.#nome;
 	}
@@ -65,7 +65,7 @@ export class Sala {
 	#ferramentas;
 	#portas;
 	#engine;
-	
+
 	constructor(nome,engine) {
 		validate(arguments,["String",Engine]);
 		this.#nome = nome;
@@ -78,8 +78,8 @@ export class Sala {
 	get nome() {
 		return this.#nome;
 	}
-	
-	
+
+
 	get objetos() {
 		return this.#objetos;
 	}
@@ -87,7 +87,7 @@ export class Sala {
 	get ferramentas() {
 		return this.#ferramentas;
 	}
-	
+
 	get portas(){
 		return this.#portas;
 	}
@@ -95,7 +95,7 @@ export class Sala {
 	get engine(){
 		return this.#engine;
 	}
-	
+
 	objetosDisponiveis(){
 		let arrObjs = [...this.#objetos.values()];
     	return arrObjs.map(obj=>obj.nome+":"+obj.descricao);
@@ -103,14 +103,14 @@ export class Sala {
 
 	ferramentasDisponiveis(){
 		let arrFer = [...this.#ferramentas.values()];
-    	return arrFer.map(f=>f.nome);		
+    	return arrFer.map(f=>f.nome);
 	}
-	
+
 	portasDisponiveis(){
 		let arrPortas = [...this.#portas.values()];
     	return arrPortas.map(sala=>sala.nome);
 	}
-	
+
 	pega(nomeFerramenta) {
 		validate(nomeFerramenta,"String");
 		let f = this.#ferramentas.get(nomeFerramenta);
@@ -149,7 +149,7 @@ export class Sala {
 	}
 }
 // ---------------------------------------------
-//Exemplo de como pode ser a classe de controle do jogo
+// Exemplo de como pode ser a classe de controle do jogo
 // ---------------------------------------------
 export class Engine{
 	#mochila;
