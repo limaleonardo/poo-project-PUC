@@ -1,5 +1,25 @@
-import { NotasDePesquisa } from "./libs/Objetos.js";
+import { EngineAventura } from "./libs/Engine.js";
+import { SalaBase } from "./libs/Salas.js";
+import { ProfessorDesacordado } from "./libs/Objetos.js";
+import { FrascoDeVidroEscuro, LupaRevelacaoArcana } from "./libs/Ferramentas.js";
 
-let notas = new NotasDePesquisa()
+const engine = new EngineAventura();
 
-notas.usar("investigar")
+const sala1 = new SalaBase(
+  "sala_entrada",
+  engine,
+  new Map([
+    ["professor", new ProfessorDesacordado()]
+  ]),
+  new Map([
+    ["frasco", new FrascoDeVidroEscuro()],
+    ["lupa", new LupaRevelacaoArcana()]
+  ]),
+  new Map()
+);
+
+// Configurando o jogo
+engine.salaCorrente = sala1;
+
+console.log("Bem-vindo à aventura!");
+engine.joga();

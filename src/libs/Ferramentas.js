@@ -1,4 +1,4 @@
-import { Ferramenta } from "./Basicas";
+import { Ferramenta } from "./Basicas.js";
 
 
 // --------------------------------------------------------
@@ -19,7 +19,7 @@ export class FrascoDeVidroEscuro extends Ferramenta {
   }
 
   usar() {
-    action = this.#vazio ? "coletar" : "aplicar"
+    let action = this.#vazio ? "coletar" : "aplicar"
     this.#vazio = !this.#vazio
     return action
   }
@@ -28,14 +28,14 @@ export class FrascoDeVidroEscuro extends Ferramenta {
 // --------------------------------------------------------
 export class LupaRevelacaoArcana extends Ferramenta {
   #descricao
-  #bateria
+  #carga
   constructor() {
     super("lupa");
-    this.#bateria = 10
+    this.#carga = 10
     this.#descricao = (
       "Uma lupa prateada, de lente cristalina e um pequeno entalhe "
       + "no formato de um olho no topo. Capaz de revelar segredos ocultos...\n"
-      + `Em seu aro é possivel ver a quantidade de usos restantes: ${this.bateria}`
+      + `Em seu aro é possivel ver a quantidade de usos restantes: ${this.carga}`
     )
   }
 
@@ -43,23 +43,23 @@ export class LupaRevelacaoArcana extends Ferramenta {
     return this.#descricao
   }
 
-  get bateria() {
-    return this.#bateria
+  get carga() {
+    return this.#carga
   }
 
   recarregar() {
-    this.#bateria = 10
+    this.#carga = 10
   }
 
   usar() {
-    if(this.bateria <= 0) {
+    if (this.carga <= 0) {
       console.log(
         "Parece que sua lupa esta sem cargas, "
-        +"melhor procurar algo para recarregá-la"
+        + "melhor procurar algo para recarregá-la"
       )
       return "faz nada"
     }
-    this.#bateria -= 1
+    this.#carga -= 1
     return "investigar"
   }
 }
@@ -106,4 +106,3 @@ export class PrensaDeMao extends Ferramenta {
     return "espremer"
   }
 }
-

@@ -212,7 +212,7 @@ export class Engine{
 				console.log("Ferramenta disponivel para ser usada: " + this.#mochila.nome);
 				break;
 			case "usa":
-					if (this.salaCorrente.usa(tokens[1])) {
+					if (this.salaCorrente.usa(tokens[1], tokens[3])) {
 						console.log("Feito !!");
 						if (this.#fim == true){
 							console.log("Parabens, voce venceu!");

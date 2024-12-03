@@ -1,7 +1,7 @@
 import { validate } from "bycontract";
-import { Sala, Engine, Ferramenta, Objeto } from "./Basicas";
+import { Sala, Engine, Ferramenta, Objeto } from "./Basicas.js";
 
-class SalaBase extends Sala {
+export class SalaBase extends Sala {
   constructor(nome, engine, objetos, ferramentas, portas) {
     // Valida os argumentos recebidos
     validate(arguments, ["String", Engine, "Map", "Map", "Map"]);
@@ -57,14 +57,14 @@ class SalaBase extends Sala {
     validate(alvo, "String")
 
     // Verifica se a ferramenta existe na mochila:
-    f = this.engine.mochila.get(nomeFerramenta)
+    let f = this.engine.mochila.get(nomeFerramenta)
     if (f == null) {
       console.log(`Essa não! Eu não faço ideia de onde deixei a ferramenta ${nomeFerramenta}`);
       return false;
     }
 
     // Verifica se o alvo existe na sala ou na mochila
-    o = this.objetos.get(alvo) || this.engine.mochila.get(alvo)
+    let o = this.objetos.get(alvo) || this.engine.mochila.get(alvo)
     if (o == null) {
       console.log(
         `Eu podia jurar que tinha visto o(a) ${alvo} por aqui...
@@ -75,10 +75,10 @@ class SalaBase extends Sala {
     }
 
     // define o tipo de ação aplicado pela ferramenta:
-    acao = f.usar()
+    let acao = f.usar()
 
     // Aplica a ação ao objeto alvo e verifica se algo foi retornado para adição a mochila
-    resultado = o.usar(acao)
+    let resultado = o.usar(acao)
     if (resultado == null) {
       return false;
     }
@@ -126,7 +126,7 @@ class SalaBase extends Sala {
           `Ah não! parece que não tenho o ingrediente ${ingrediente} na mochila.
           (Todos os itens listados precisam estar na mochila para prosseguir)`
         )
-        return False
+        return false
       }
     });
 

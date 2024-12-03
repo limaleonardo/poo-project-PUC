@@ -48,7 +48,7 @@ export class GarrafaEmpoeirada extends Objeto {
       case "investigar":
         this.acaoOk = true;
         console.log(this.descricao);
-        return CachacaBraba()
+        return new CachacaBraba()
       default:
         console.log(`Você não pode fazer isso (${acao}) com ${this.nome}`)
     }
@@ -102,7 +102,7 @@ export class RaboDeDraco extends Objeto {
             + "a seta presente na ponta da peça de carne"
           );
           this.acaoOk = true
-          return PontaDeRaboDeDraco()
+          return new PontaDeRaboDeDraco()
         }
         console.log("Sua faca não parece ser capaz de cortar a seção mais espessa da cauda ...")
         break;
@@ -152,7 +152,7 @@ export class PilhaDePoeiraRosada extends Objeto {
       case "investigar":
         this.acaoOk = true;
         console.log(this.descricao);
-        return SalRosaDosMontesNevados()
+        return new SalRosaDosMontesNevados()
       default:
         console.log(`Você não pode fazer isso (${acao}) com ${this.nome}`)
     }
@@ -343,8 +343,8 @@ export class CaldeiraoAlquimico extends Objeto {
   constructor() {
     super(
       "caldeirao_alquimico",
-      "Um imponente caldeir",
-      ""
+      "Um imponente caldeirão prateado pendurado sobre uma chama azul vibrante",
+      "O caldeirão repousa, agora vazio, sobre a chama extinta."
     );
     this.#recipe_stage = 0
     this.#recipe_steps = [
@@ -358,8 +358,12 @@ export class CaldeiraoAlquimico extends Objeto {
     validate(acao, "String");
     switch (acao) {
       case "coletar":
+        if (this.#recipe_stage+1 < this.#recipe_steps.length){
+          console.log("A poção não parece estar pronta ainda ...");
+          break;
+        }
         this.acaoOk = true
-        console.log("lorem ipsilum");
+        console.log(this.descricao);
         break;
       default:
         console.log(`Você não pode fazer isso (${acao}) com ${this.nome}`)
@@ -377,8 +381,8 @@ export class CaldeiraoAlquimico extends Objeto {
     Parece que correu tudo bem, agora me resta coletar essa poção e curar o professor ...`
 
     // Adicionou mais ingredientes do que deveria:
-    if (this.#recipe_stage+1 > this.#recipe_steps[this.#recipe_stage].length) {
-      console.log( mensagemDeFalha )
+    if (this.#recipe_stage + 1 > this.#recipe_steps[this.#recipe_stage].length) {
+      console.log(mensagemDeFalha)
       return "FIM"
     }
 
@@ -386,18 +390,20 @@ export class CaldeiraoAlquimico extends Objeto {
     ingredientes.forEach(item => {
       this.#recipe_steps[this.#recipe_stage].forEach(recipeItem => {
         if (!(item instanceof recipeItem)) {
-          console.log( mensagemDeFalha )
+          console.log(mensagemDeFalha)
           return "FIM"
         }
       });
     });
 
     // completou o estagio final
-    if (this.#recipe_stage+1 === this.#recipe_steps[this.#recipe_stage].length) {
-
+    if (this.#recipe_stage + 1 === this.#recipe_steps[this.#recipe_stage].length) {
+      console.log(
+        mensagemDeSucesso
+      )
+      return true
     }
     this.#recipe_stage += 1
   }
 
 }
-
